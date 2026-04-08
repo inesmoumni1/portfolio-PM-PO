@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inès Moumni — Portfolio PM · PO · UX/UI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #F5F0E8;
+      color: #1A1A1A;
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─── */
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 40px; border-bottom: 2px solid #1A1A1A;
+      background: #F5F0E8; position: sticky; top: 0; z-index: 100;
+    }
+    .nav-logo {
+      width: 44px; height: 44px; border: 2px solid #1A1A1A;
+      background: #C8A4C8; display: flex; align-items: center;
+      justify-content: center; font-family: 'Syne', sans-serif;
+      font-weight: 800; font-size: 16px;
+    }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a {
+      font-size: 12px; font-weight: 500; text-decoration: none;
+      color: #1A1A1A; letter-spacing: 0.5px; text-transform: uppercase; cursor: pointer;
+    }
+    .nav-links a:hover { text-decoration: underline; }
+
+    /* ─── HERO ─── */
+    .hero {
+      display: grid; grid-template-columns: 1fr 1fr;
+      padding: 60px 40px 50px; gap: 40px; align-items: center;
+      border-bottom: 2px solid #1A1A1A;
+      background: linear-gradient(135deg, #F5F0E8 0%, #EDE8FF 50%, #FFE4EE 100%);
+    }
+    .hero-tags { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 24px; }
+    .tag {
+      padding: 8px 16px; border: 2px solid #1A1A1A; border-radius: 999px;
+      font-size: 13px; font-weight: 500; display: flex; align-items: center; gap: 6px;
+      opacity: 0; transform: translateY(12px); animation: tagIn 0.4s ease forwards;
+    }
+    .tag:nth-child(1) { animation-delay: 0.1s; }
+    .tag:nth-child(2) { animation-delay: 0.22s; }
+    .tag:nth-child(3) { animation-delay: 0.34s; }
+    .tag:nth-child(4) { animation-delay: 0.46s; }
+    @keyframes tagIn { to { opacity: 1; transform: translateY(0); } }
+    .tag-blue { background: #AED9E8; }
+    .tag-pink { background: #EDAFC8; }
+    .tag-beige { background: #D4C8B0; }
+    .tag-lavender { background: #C8A4C8; }
+
+    .hero-name {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(48px, 7vw, 80px); font-weight: 800;
+      line-height: 0.95; letter-spacing: -2px; margin-bottom: 16px;
+      text-transform: uppercase;
+      opacity: 0; transform: translateY(16px);
+      animation: fadeUp 0.5s ease 0.55s forwards;
+    }
+    .hero-role {
+      font-size: 15px; font-weight: 500; letter-spacing: 1px;
+      text-transform: uppercase; color: #444; margin-bottom: 6px;
+      padding: 8px 14px; border: 1.5px dashed #aaa; border-radius: 8px;
+      display: inline-block; background: rgba(255,255,255,0.5);
+      opacity: 0; animation: fadeUp 0.4s ease 0.7s forwards;
+    }
+    .hero-desc {
+      font-size: 16px; line-height: 1.65; color: #333; max-width: 480px;
+      margin-top: 14px;
+      opacity: 0; animation: fadeUp 0.4s ease 0.9s forwards;
+    }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+    .hero-right { display: flex; flex-direction: column; align-items: flex-end; gap: 16px; }
+    .hero-photo-frame {
+      width: 220px; height: 260px; border: 3px solid #1A1A1A;
+      border-radius: 12px; overflow: hidden; box-shadow: 6px 6px 0 #1A1A1A;
+      opacity: 0; animation: fadeUp 0.6s ease 0.3s forwards;
+    }
+    .hero-photo-frame img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+    .hero-stats {
+      display: flex; gap: 16px;
+      opacity: 0; animation: fadeUp 0.4s ease 0.65s forwards;
+    }
+    .stat-pill {
+      border: 2px solid #1A1A1A; border-radius: 12px; padding: 12px 16px;
+      text-align: center; background: #F5F0E8; box-shadow: 3px 3px 0 #1A1A1A;
+    }
+    .stat-pill .num { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; }
+    .stat-pill .lbl { font-size: 11px; color: #666; text-transform: uppercase; letter-spacing: 0.5px; }
+
+    /* ─── SECTIONS ─── */
+    .section { padding: 60px 40px; border-bottom: 2px solid #1A1A1A; }
+    .section-title {
+      font-family: 'Syne', sans-serif; font-size: 36px; font-weight: 800;
+      text-align: center; margin-bottom: 8px; letter-spacing: -1px;
+    }
+    .section-underline { width: 60px; height: 3px; background: #EDAFC8; margin: 0 auto 40px; }
+
+    /* ─── À PROPOS ─── */
+    .about-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .about-card { border: 2px solid #1A1A1A; border-radius: 12px; overflow: hidden; box-shadow: 4px 4px 0 #1A1A1A; }
+    .about-card-header {
+      padding: 16px 20px; display: flex; align-items: center; gap: 12px;
+      border-bottom: 2px solid #1A1A1A;
+    }
+    .about-card-header .icon-box {
+      width: 36px; height: 36px; border: 2px solid #1A1A1A; background: #F5F0E8;
+      display: flex; align-items: center; justify-content: center; border-radius: 8px; font-size: 16px;
+    }
+    .about-card-header h3 { font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; }
+    .card-blue { background: #AED9E8; }
+    .card-pink { background: #EDAFC8; }
+    .card-beige { background: #D4C8B0; }
+    .about-card-body { background: #F5F0E8; padding: 12px; display: flex; flex-direction: column; gap: 8px; }
+    .about-item {
+      background: white; border: 1.5px solid #1A1A1A; border-radius: 8px;
+      padding: 10px 14px; font-size: 14px; font-weight: 500;
+      min-height: 52px; display: flex; flex-direction: column; justify-content: center;
+    }
+    .about-item span { display: block; font-size: 12px; color: #666; font-weight: 400; margin-top: 2px; }
+
+    /* ─── EXPÉRIENCES ─── */
+    .exp-section { background: #F0EBE0; }
+    .exp-grid { display: flex; flex-direction: column; gap: 16px; }
+    .exp-card {
+      background: white; border: 2px solid #1A1A1A; border-radius: 12px;
+      box-shadow: 4px 4px 0 #1A1A1A;
+      display: grid; grid-template-columns: 6px 220px 1fr auto;
+      overflow: hidden; transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .exp-card:hover { transform: translate(-2px,-2px); box-shadow: 7px 7px 0 #1A1A1A; }
+    .exp-stripe { width: 6px; }
+    .stripe-blue { background: #AED9E8; }
+    .stripe-beige { background: #D4C8B0; }
+    .stripe-lavender { background: #C8A4C8; }
+    .exp-left {
+      padding: 20px 20px 20px 16px; border-right: 1.5px solid #e8e0d4;
+      display: flex; flex-direction: column; justify-content: center; gap: 6px;
+    }
+    .exp-logo-row { display: flex; align-items: center; gap: 10px; }
+    .exp-logo {
+      width: 38px; height: 38px; border: 2px solid #1A1A1A; border-radius: 8px;
+      background: #F5F0E8; display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0;
+    }
+    .exp-company { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700; }
+    .exp-role { font-size: 12px; color: #555; font-weight: 500; line-height: 1.4; }
+    .exp-date {
+      display: inline-block; font-size: 11px; color: #888; background: #F5F0E8;
+      border: 1.5px solid #ddd; border-radius: 999px; padding: 3px 10px;
+      margin-top: 2px; width: fit-content;
+    }
+    .exp-right {
+      padding: 20px 24px; display: flex; flex-direction: column;
+      justify-content: center; gap: 10px;
+    }
+    .exp-bullets { display: flex; flex-direction: column; gap: 6px; }
+    .exp-bullet { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; line-height: 1.5; color: #333; }
+    .exp-bullet-dot { width: 5px; height: 5px; border-radius: 50%; background: #1A1A1A; flex-shrink: 0; margin-top: 7px; }
+    .exp-tags { display: flex; flex-wrap: nowrap; gap: 6px; }
+    .exp-tag {
+      font-size: 11px; padding: 3px 10px; border: 1.5px solid #1A1A1A;
+      border-radius: 6px; background: #F5F0E8; font-weight: 500; white-space: nowrap;
+    }
+    .exp-badge { padding: 20px 16px; display: flex; align-items: center; justify-content: center; border-left: 1.5px solid #e8e0d4; }
+    .exp-badge-inner {
+      writing-mode: vertical-rl; text-orientation: mixed; transform: rotate(180deg);
+      font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 1.5px; color: #aaa;
+    }
+
+    /* ─── PROJETS ─── */
+    .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .project-card {
+      border: 2px solid #1A1A1A; border-radius: 12px; overflow: hidden;
+      box-shadow: 4px 4px 0 #1A1A1A; display: flex; flex-direction: column;
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.55s ease, transform 0.55s ease, box-shadow 0.18s ease;
+    }
+    .project-card.visible { opacity: 1; transform: translateY(0); }
+    .project-card:nth-child(1) { transition-delay: 0s; }
+    .project-card:nth-child(2) { transition-delay: 0.12s; }
+    .project-card:nth-child(3) { transition-delay: 0.24s; }
+    .project-card.visible:hover { transform: translate(-2px,-2px); box-shadow: 8px 8px 0 #1A1A1A; }
+    .project-card-top { padding: 20px; border-bottom: 2px solid #1A1A1A; }
+    .project-icon {
+      width: 48px; height: 48px; border: 2px solid #1A1A1A; background: #F5F0E8;
+      display: flex; align-items: center; justify-content: center; border-radius: 10px; font-size: 22px;
+    }
+    .project-card-body { background: #F5F0E8; padding: 20px; flex: 1; display: flex; flex-direction: column; gap: 10px; }
+    .project-num { font-size: 11px; font-weight: 500; color: #888; text-transform: uppercase; letter-spacing: 1px; }
+    .project-title { font-family: 'Syne', sans-serif; font-size: 17px; font-weight: 700; line-height: 1.3; }
+    .project-role { font-size: 12px; color: #555; font-weight: 500; }
+    .problem-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; color: #888; }
+    .problem-text { font-size: 13px; line-height: 1.55; color: #444; }
+    .project-kpi { padding: 10px 14px; border: 2px solid #1A1A1A; border-radius: 8px; font-size: 13px; font-weight: 500; line-height: 1.45; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 4px; }
+    .ptag { font-size: 11px; padding: 4px 10px; border: 1.5px solid #1A1A1A; border-radius: 6px; background: white; font-weight: 500; }
+    .proj-blue { background: #AED9E8; }
+    .proj-pink { background: #EDAFC8; }
+    .proj-beige { background: #D4C8B0; }
+    .project-btn {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      margin-top: auto; padding: 11px 16px; border: 2px solid #1A1A1A;
+      border-radius: 10px; font-size: 13px; font-weight: 500; text-decoration: none;
+      color: #1A1A1A; box-shadow: 3px 3px 0 #1A1A1A;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .project-btn:hover { transform: translate(-2px,-2px); box-shadow: 5px 5px 0 #1A1A1A; }
+    .btn-demo { background: #AED9E8; }
+    .btn-case-pink { background: #EDAFC8; }
+    .btn-case-gold { background: #E8D5A3; }
+
+    /* ─── COMPÉTENCES ─── */
+    .skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .skill-card { border: 2px solid #1A1A1A; border-radius: 12px; overflow: hidden; box-shadow: 4px 4px 0 #1A1A1A; }
+    .skill-header { padding: 14px 20px; border-bottom: 2px solid #1A1A1A; font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; }
+    .skill-body { background: #F5F0E8; padding: 16px; display: flex; flex-wrap: wrap; gap: 8px; }
+    .skill-pill { padding: 6px 14px; border: 1.5px solid #1A1A1A; border-radius: 999px; font-size: 13px; font-weight: 500; background: white; }
+
+    /* ─── CONTACT ─── */
+    .contact-section {
+      background: #EDAFC8; padding: 70px 40px 60px;
+      border-bottom: 2px solid #1A1A1A; position: relative; overflow: hidden;
+    }
+    .contact-zigzag {
+      position: absolute; top: 0; left: 0; right: 0; height: 18px;
+      background: repeating-linear-gradient(90deg, transparent, transparent 14px, #1A1A1A 14px, #1A1A1A 16px);
+      opacity: 0.12;
+    }
+    .contact-badge {
+      display: inline-block; border: 2px solid #1A1A1A; padding: 6px 18px;
+      font-size: 12px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase;
+      background: #AED9E8; margin-bottom: 20px; box-shadow: 3px 3px 0 #1A1A1A;
+    }
+    .contact-title { font-family: 'Syne', sans-serif; font-size: 48px; font-weight: 800; letter-spacing: -1.5px; margin-bottom: 12px; }
+    .contact-sub { font-size: 16px; color: #444; margin-bottom: 36px; line-height: 1.6; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .contact-avail {
+      display: inline-flex; align-items: center; gap: 8px; background: #F5F0E8;
+      border: 2px solid #1A1A1A; border-radius: 999px; padding: 8px 18px;
+      font-size: 13px; font-weight: 500; margin-bottom: 36px; box-shadow: 3px 3px 0 #1A1A1A;
+    }
+    .avail-dot { width: 8px; height: 8px; border-radius: 50%; background: #3db87a; animation: pulse 1.8s ease-in-out infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.4;transform:scale(0.7);} }
+    .btn-linkedin {
+      display: flex; align-items: center; gap: 10px; background: #0A66C2; color: white;
+      border: 2px solid #1A1A1A; border-radius: 10px; padding: 14px 28px;
+      font-size: 15px; font-weight: 500; text-decoration: none;
+      box-shadow: 4px 4px 0 #1A1A1A; transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .btn-linkedin:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 #1A1A1A; }
+    .also-on { font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; color: #555; }
+    .icon-btns { display: flex; gap: 10px; }
+    .icon-btn {
+      width: 48px; height: 48px; border: 2px solid #1A1A1A; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none; color: #1A1A1A; box-shadow: 3px 3px 0 #1A1A1A;
+      transition: transform 0.15s, box-shadow 0.15s; cursor: pointer;
+    }
+    .icon-btn:hover { transform: translate(-2px,-2px); box-shadow: 5px 5px 0 #1A1A1A; }
+    .icon-btn-mail { background: #C8A4C8; }
+    .icon-btn-cv { background: #F5F0E8; }
+    .icon-btn-site { background: #AED9E8; }
+
+    /* ─── FOOTER ─── */
+    .footer { background: #2A2A28; padding: 22px 40px; display: flex; align-items: center; justify-content: space-between; }
+    .footer-logo {
+      width: 38px; height: 38px; border: 2px solid #666; background: #3a3a38;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Syne', sans-serif; font-weight: 800; font-size: 14px; color: #ddd;
+    }
+    .footer-copy { font-size: 13px; color: #888; }
+    .back-to-top {
+      border: 1.5px solid #555; border-radius: 8px; padding: 8px 16px;
+      font-size: 13px; color: #bbb; background: transparent; cursor: pointer;
+      font-family: 'DM Sans', sans-serif; box-shadow: 3px 3px 0 #444;
+      transition: border-color 0.2s, color 0.2s, transform 0.15s, box-shadow 0.15s;
+    }
+    .back-to-top:hover { border-color: #EDAFC8; color: #EDAFC8; transform: translate(-2px,-2px); box-shadow: 5px 5px 0 #555; }
+  </style>
+</head>
+<body id="top">
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-logo">IM</div>
+    <div class="nav-links">
+      <a href="#about">À propos</a>
+      <a href="#experiences">Expériences</a>
+      <a href="#projets">Projets</a>
+      <a href="#competences">Compétences</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-tags">
+        <span class="tag tag-blue">⚡ Product Builder</span>
+        <span class="tag tag-pink">🎨 UX Thinker</span>
+        <span class="tag tag-beige">📊 Data-driven</span>
+        <span class="tag tag-lavender">🚀 MVP en prod</span>
+      </div>
+      <h1 class="hero-name">Inès<br>Moumni</h1>
+      <p class="hero-role">Candidate en alternance — PM · PO · UX/UI</p>
+      <p class="hero-desc">Profil hybride Business × Tech. De la discovery à la mise en production, je transforme des problèmes utilisateurs en solutions concrètes, mesurables et déployées.</p>
+    </div>
+    <div class="hero-right">
+      <div class="hero-photo-frame">
+        <img src="https://raw.githubusercontent.com/inesmoumni1/Ines-Moumni/main/photo%20profil.png" alt="Inès Moumni" />
+      </div>
+      <div class="hero-stats">
+        <div class="stat-pill"><div class="num">1</div><div class="lbl">MVP live</div></div>
+        <div class="stat-pill"><div class="num">3</div><div class="lbl">Case studies</div></div>
+        <div class="stat-pill"><div class="num">C2</div><div class="lbl">Anglais</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- À PROPOS -->
+  <section class="section" id="about">
+    <h2 class="section-title">À propos d'Inès</h2>
+    <div class="section-underline"></div>
+    <div class="about-grid">
+      <div class="about-card">
+        <div class="about-card-header card-blue"><div class="icon-box">🎓</div><h3>Formation</h3></div>
+        <div class="about-card-body">
+          <div class="about-item">Ironhack — Bootcamp UX/UI Design<span>Admise · Juin–Août 2026</span></div>
+          <div class="about-item">TBS Education — Programme Grande École<span>Master in Management</span></div>
+          <div class="about-item">MSc International Business<span>Barcelone · Mention Très Bien</span></div>
+        </div>
+      </div>
+      <div class="about-card">
+        <div class="about-card-header card-pink"><div class="icon-box">🏅</div><h3>Certifications</h3></div>
+        <div class="about-card-body">
+          <div class="about-item">Google Project Management<span>En cours</span></div>
+          <div class="about-item">Scrum Master (notions agile)<span>Via SESAME Consulting / TBS</span></div>
+          <div class="about-item">NxL — L'Oréal Certified<span>Strategic Product Analyst</span></div>
+        </div>
+      </div>
+      <div class="about-card">
+        <div class="about-card-header card-beige"><div class="icon-box">✨</div><h3>Fun facts</h3></div>
+        <div class="about-card-body">
+          <div class="about-item">📝 Co-autrice · Revue Management International<span>"Partnering for Impact" — RSE & ODD · À paraître</span></div>
+          <div class="about-item">🥾 Randonneuse<span>Vision long terme, planification & endurance</span></div>
+          <div class="about-item">🌿 Fondatrice de Hammam Glow<span>De l'idée à l'étude de marché — pivot stratégique assumé</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPÉRIENCES -->
+  <section class="section exp-section" id="experiences">
+    <h2 class="section-title">Expériences professionnelles</h2>
+    <div class="section-underline"></div>
+    <div class="exp-grid">
+
+      <div class="exp-card">
+        <div class="exp-stripe stripe-blue"></div>
+        <div class="exp-left">
+          <div class="exp-logo-row"><div class="exp-logo">🌶️</div><div class="exp-company">McCormick</div></div>
+          <div class="exp-role">Data Strategy & Insights<br>Graduate Program · Finaliste</div>
+          <div class="exp-date">Mars – Avr. 2025</div>
+        </div>
+        <div class="exp-right">
+          <div class="exp-bullets">
+            <div class="exp-bullet"><span class="exp-bullet-dot"></span>Analyse de 600+ données consommateurs pour identifier des leviers de croissance et opportunités de marché.</div>
+            <div class="exp-bullet"><span class="exp-bullet-dot"></span>Présentation des recommandations stratégiques à la Direction Marketing.</div>
+          </div>
+          <div class="exp-tags">
+            <span class="exp-tag">Data Analysis</span>
+            <span class="exp-tag">Market Strategy</span>
+            <span class="exp-tag">Stakeholders</span>
+          </div>
+        </div>
+        <div class="exp-badge"><div class="exp-badge-inner">FMCG</div></div>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-stripe stripe-beige"></div>
+        <div class="exp-left">
+          <div class="exp-logo-row"><div class="exp-logo">🌊</div><div class="exp-company">Planète Mer</div></div>
+          <div class="exp-role">Chargée de Projet Digital<br>& Partenariats B2B</div>
+          <div class="exp-date">Sept. 2023 – Déc. 2024</div>
+        </div>
+        <div class="exp-right">
+          <div class="exp-bullets">
+            <div class="exp-bullet"><span class="exp-bullet-dot"></span>Recette (UAT) du nouveau site web — tests utilisateurs, remontée et validation des corrections avec le développeur.</div>
+            <div class="exp-bullet"><span class="exp-bullet-dot"></span>Portefeuille de 60+ partenaires B2B et levée de 20 000 € pour un colloque national (300+ participants).</div>
+          </div>
+          <div class="exp-tags">
+            <span class="exp-tag">UAT</span>
+            <span class="exp-tag">Partenariats B2B</span>
+            <span class="exp-tag">Gestion de projet</span>
+          </div>
+        </div>
+        <div class="exp-badge"><div class="exp-badge-inner">ONG</div></div>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-stripe stripe-lavender"></div>
+        <div class="exp-left">
+          <div class="exp-logo-row"><div class="exp-logo">🚀</div><div class="exp-company">Hopper · SESAME</div></div>
+          <div class="exp-role">Scrum Master<br>& Consultante Stratégie</div>
+          <div class="exp-date">Mars – Avr. 2023</div>
+        </div>
+        <div class="exp-right">
+          <div class="exp-bullets">
+            <div class="exp-bullet"><span class="exp-bullet-dot"></span>Animation de 2 sprints agiles (backlog, planning, reviews) pour une équipe de 10 consultants — delivery respecté.</div>
+            <div class="exp-bullet"><span class="exp-bullet-dot"></span>Gestion des parties prenantes via recommandations stratégiques d'internationalisation en revue finale.</div>
+          </div>
+          <div class="exp-tags">
+            <span class="exp-tag">Agile / Scrum</span>
+            <span class="exp-tag">Delivery</span>
+            <span class="exp-tag">Stakeholders</span>
+          </div>
+        </div>
+        <div class="exp-badge"><div class="exp-badge-inner">CONSEIL</div></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROJETS -->
+  <section class="section" id="projets">
+    <h2 class="section-title">Projets & Case Studies</h2>
+    <div class="section-underline"></div>
+    <div class="projects-grid" id="projects-grid">
+
+      <div class="project-card">
+        <div class="project-card-top proj-blue"><div class="project-icon">⚡</div></div>
+        <div class="project-card-body">
+          <div class="project-num">Projet 01 · Builder</div>
+          <div class="project-title">RetailSignal AI — MVP en production</div>
+          <div class="project-role">Product Owner & Developer · Full-Stack</div>
+          <div class="problem-label">Problème</div>
+          <div class="problem-text">Les Account Managers perdent des heures sur Google Trends pour préparer leurs pitchs commerciaux.</div>
+          <div class="project-kpi">🎯 Temps de préparation AM réduit de 35% — battlecards générées via LLM, déployées sur Vercel.</div>
+          <div class="project-tags">
+            <span class="ptag">React.js</span><span class="ptag">LLM</span><span class="ptag">Vercel</span><span class="ptag">Discovery</span>
+          </div>
+          <a class="project-btn btn-demo" href="https://retailsignal-ai.vercel.app" target="_blank">🔗 Voir la démo live ↗</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-card-top proj-pink"><div class="project-icon">🛒</div></div>
+        <div class="project-card-body">
+          <div class="project-num">Projet 02 · UX & CRO</div>
+          <div class="project-title">Galeries Lafayette — Luxury Nudge</div>
+          <div class="project-role">Product Manager · Focus CRO & UX</div>
+          <div class="problem-label">Problème</div>
+          <div class="problem-text">70% de taux d'abandon panier — l'info de stock limité reste invisible jusqu'à l'étape de paiement.</div>
+          <div class="project-kpi">🎯 Réduction du taux d'abandon via un test A/B sur 50% du trafic iOS, en remontant les données stock sur la fiche produit.</div>
+          <div class="project-tags">
+            <span class="ptag">A/B Test</span><span class="ptag">API Stock</span><span class="ptag">UX</span><span class="ptag">CRO</span>
+          </div>
+          <a class="project-btn btn-case-pink" href="https://drive.google.com/file/d/1Wq00U4ymTmHQZaXb_EOHl82Y9dUYFSIL/view?usp=drive_link" target="_blank">📄 Voir l'étude de cas ↗</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-card-top proj-beige"><div class="project-icon">💄</div></div>
+        <div class="project-card-body">
+          <div class="project-num">Projet 03 · Stratégie</div>
+          <div class="project-title">Lancôme — "Beauty for Each"</div>
+          <div class="project-role">Strategic Product Analyst · Focus Data & IA</div>
+          <div class="problem-label">Problème</div>
+          <div class="problem-text">Face au "less makeup" et à l'essor du skincare, Lancôme perd en visibilité face à Dior Beauty sur les recherches hybrides.</div>
+          <div class="project-kpi">🎯 Gap concurrentiel de 2,6x identifié via Google Trends — proposition stratégique "Beauty for Each" formulée.</div>
+          <div class="project-tags">
+            <span class="ptag">Google Trends</span><span class="ptag">Benchmark</span><span class="ptag">Beauty Tech</span><span class="ptag">IA</span>
+          </div>
+          <a class="project-btn btn-case-gold" href="https://drive.google.com/file/d/1mZ49vuP_JhXQ9y24rZ4TftzyUHLMyqSe/view?usp=sharing" target="_blank">📄 Voir l'étude de cas ↗</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- COMPÉTENCES -->
+  <section class="section" id="competences">
+    <h2 class="section-title">Compétences</h2>
+    <div class="section-underline"></div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-header card-blue">📦 Product & Digital</div>
+        <div class="skill-body">
+          <span class="skill-pill">Discovery & Delivery</span>
+          <span class="skill-pill">User Stories</span>
+          <span class="skill-pill">KPIs & Analytics</span>
+          <span class="skill-pill">Backlog Prioritization</span>
+          <span class="skill-pill">Méthodologie Agile</span>
+          <span class="skill-pill">Test & Learn</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-header card-pink">💻 Tech & Dev</div>
+        <div class="skill-body">
+          <span class="skill-pill">React.js</span>
+          <span class="skill-pill">Tailwind CSS</span>
+          <span class="skill-pill">Vercel</span>
+          <span class="skill-pill">IA Générative</span>
+          <span class="skill-pill">WordPress</span>
+          <span class="skill-pill">Power BI</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-header card-beige">🎨 Design & UX</div>
+        <div class="skill-body">
+          <span class="skill-pill">Figma (en cours)</span>
+          <span class="skill-pill">Design Thinking</span>
+          <span class="skill-pill">User Journey</span>
+          <span class="skill-pill">Tests Utilisateurs</span>
+          <span class="skill-pill">Prototypage</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-header" style="background:#C8A4C8;border-bottom:2px solid #1A1A1A;">📊 Data & Stratégie</div>
+        <div class="skill-body">
+          <span class="skill-pill">Excel avancé</span>
+          <span class="skill-pill">Analyse marché</span>
+          <span class="skill-pill">CRM</span>
+          <span class="skill-pill">SEO & Contenu</span>
+          <span class="skill-pill">Canva</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <div class="contact-zigzag"></div>
+    <div style="text-align:center;">
+      <div class="contact-badge">Connectons-nous</div>
+      <h2 class="contact-title">Me contacter</h2>
+      <p class="contact-sub">Échangeons sur mon profil, une opportunité d'alternance ou discutons simplement produit ?</p>
+      <div style="display:flex;justify-content:center;margin-bottom:36px;">
+        <div class="contact-avail">
+          <span class="avail-dot"></span>
+          Disponible pour une alternance à temps plein dès septembre 2026 · 13 mois
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;justify-content:center;">
+        <a class="btn-linkedin" href="https://www.linkedin.com/in/in%C3%A8s-moumni" target="_blank">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          Me contacter sur LinkedIn
+        </a>
+        <span class="also-on">Aussi sur</span>
+        <div class="icon-btns">
+          <a class="icon-btn icon-btn-mail" href="/cdn-cgi/l/email-protection#026f6d776f6c6b2c6b6c67717142656f636b6e2c616d6f" title="Email">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          </a>
+          <a class="icon-btn icon-btn-cv" href="https://drive.google.com/file/d/1le4S893ErFUj_fWEI2Qp2A7D0G6dhRXB/view?usp=sharing" target="_blank" title="Télécharger le CV">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </a>
+          <a class="icon-btn icon-btn-site" href="https://retailsignal-ai.vercel.app" target="_blank" title="RetailSignal AI">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1A1A1A" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-logo">IM</div>
+    <div class="footer-copy">© 2026 Inès Moumni. Tous droits réservés.</div>
+    <button class="back-to-top" onclick="document.getElementById('top').scrollIntoView({behavior:'smooth'})">Retour en haut ↑</button>
+  </footer>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    // Scroll reveal pour les cartes projets
+    const cards = document.querySelectorAll('.project-card');
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+      }, { threshold: 0.05, rootMargin: '0px 0px -50px 0px' });
+      cards.forEach(card => observer.observe(card));
+    } else {
+      cards.forEach(card => card.classList.add('visible'));
+    }
+    setTimeout(() => { cards.forEach(card => card.classList.add('visible')); }, 800);
+
+    // Navigation smooth scroll
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', (e) => {
+        const href = link.getAttribute('href');
+        if (href && href.startsWith('#')) {
+          e.pr
